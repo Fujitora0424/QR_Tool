@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/et_qr_string"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="Input the te xt" />
+    <Button
+        android:id="@+id/btn_add_qrcode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="本地生成二维码" />
+  <Button
+        android:id="@+id/btn_request_qrcode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="远程申请二维码" />
+    <ImageView
+        android:id="@+id/iv_qr_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/barcodeshape"  
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center" />
+</LinearLayout>

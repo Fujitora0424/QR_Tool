@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="IP:" />
+    <EditText
+        android:id="@+id/et_ip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="172.16.3.233" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Port:" />
+    <EditText
+        android:id="@+id/et_port"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="6667" />
+    <Button
+        android:id="@+id/btn_scan_barcode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="扫码" />
+</LinearLayout>

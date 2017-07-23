@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/ScrollView01">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+        <RelativeLayout
+            android:id="@+id/ServerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/serverTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="服务端：" />
+            <Button
+                android:id="@+id/CreateConnect"
+                android:layout_below="@+id/serverTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="创建服务" />
+            <RelativeLayout
+                android:id="@+id/buttonlayout"
+                android:layout_below="@+id/CreateConnect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/serverSendLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:hint="请输入端口"
+                        android:numeric="integer"
+                        android:id="@+id/portText" />
+                    <Button
+                        android:layout_weight="1"
+                        android:id="@+id/HideMessageButton"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="隐藏信息" />
+                    <Button
+                        android:layout_weight="1"
+                        android:id="@+id/HideLogButton"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="隐藏日志" />
+                    <Button
+                        android:layout_weight="1"
+                        android:id="@+id/HideTradeButton"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="隐藏数据" />
+                    <Button
+                        android:layout_weight="1"
+                        android:id="@+id/ClearButton"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="清除" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/PageLayout"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/ServerLayout"
+            android:layout_height="480dp">
+            <RelativeLayout
+                android:id="@+id/messageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+                <RelativeLayout
+                    android:id="@+id/messagelabelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+                    <TextView
+                        android:id="@+id/messagelabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="信息:" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/messageLayout"
+                    android:layout_below="@+id/messagelabelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/messageText"
+                        android:background="@drawable/message"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:singleLine="false"
+                        android:maxLines="50"
+                        android:scrollbars="vertical"
+                        android:layout_alignParentTop="true"
+                        android:fadeScrollbars="false"
+                        android:text="" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
