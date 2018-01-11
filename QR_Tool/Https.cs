@@ -90,7 +90,65 @@ namespace QR_Tool
 
         }
 
-      
+
+        public static async Task sendOfflineBarCodeAsync(Dictionary<string, string> dic, string surl)
+        {
+
+            {
+
+                try
+                {
+                    Dictionary<string, string> send_Dic = new Dictionary<string, string>(dic);
+                    string encoding = send_Dic["encoding"];
+
+                    string url = surl; /*"https://1715m7746k.51mypc.cn:15107/";*/
+
+                    //设置HttpClientHandler的AutomaticDecompression
+                    var handler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip };
+
+
+                    //创建HttpClient（注意传入HttpClientHandler）
+                    using (var http = new HttpClient(handler))
+                    {
+                        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                        System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+                            (se, cert, chain, sslerror) =>
+                            {
+                                return true;
+                            };
+
+                        BarCode newBarCode = new BarCode();
+                        byte[] scanResult = await newBarCode.ScanBarcodeAsync();
+                        string barCodeString = Encoding.GetEncoding(encoding).GetString(scanResult);
+                        Dictionary<string, string> send_Dictionnary = new Dictionary<string, string>();
+                        List<string> s = barCodeString.Split('/').ToList();
+                        send_Dictionnary = UP_SDK.SDKUtil.parseQString(s[5], Encoding.GetEncoding(encoding));
+
+                        //使用FormUrlEncodedContent做HttpContent
+
+                        var content = new FormUrlEncodedContent(send_Dictionnary);
+
+                        //await异步等待回应
+
+                        var response = await http.PostAsync(url, content);
+                        //确保HTTP成功状态值
+                        response.EnsureSuccessStatusCode();
+                        //await异步读取最后的JSON（注意此时gzip已经被自动解压缩了，因为上面的AutomaticDecompression = DecompressionMethods.GZip）
+                        string messge = await response.Content.ReadAsStringAsync();
+
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    var a = e.Message;
+                }
+            }
+
+
+        }
+
+
     }
 
 }

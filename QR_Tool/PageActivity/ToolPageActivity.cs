@@ -192,18 +192,24 @@ namespace QR_Tool.PageActivity
                         byte[] btemp = newtcp.ReceiveByteArray(clientStream);
                         Message mes = new Message(btemp);
                         byte messagetype = mes.Date_9F01.Data[0];
-
-                       byte[] barCodeData = null;
+                    string url = "";
+                    string logData = "";
+                    Dictionary<string, string> log ; 
+                    byte[] barCodeData = null;
 
                         switch (messagetype)
                         {
-                            case 0x00:                                //握手
-                                break;
+                            case 0x00:
+                            logData = Encoding.Default.GetString(mes.Date_9F03.Data);
+                            url = Encoding.Default.GetString(mes.Date_9F05.Data);
+                            log = UP_SDK.SDKUtil.CoverStringToDictionary(logData, Encoding.UTF8);
+                            var re_00 = Https.sendOfflineBarCodeAsync(log, url);//脱机扫码
+                            break;
                             case 0x01:
-                                string  logData = Encoding.Default.GetString(mes.Date_9F03.Data);
-                                string url = Encoding.Default.GetString(mes.Date_9F05.Data);
-                                Dictionary<string, string> log = UP_SDK.SDKUtil.CoverStringToDictionary(logData, Encoding.UTF8);
-                                var re = Https.sendBarCodeAsync(log, url);
+                                logData = Encoding.Default.GetString(mes.Date_9F03.Data);
+                                url = Encoding.Default.GetString(mes.Date_9F05.Data);
+                                log = UP_SDK.SDKUtil.CoverStringToDictionary(logData, Encoding.UTF8);
+                                var re_01 = Https.sendBarCodeAsync(log, url);
                             break;
                             case 0x02:
                                 //图片扫描

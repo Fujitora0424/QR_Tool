@@ -24,7 +24,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:background="@drawable/color_selector">
-                <TextView
+                <TextView               
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:text="辅助工具"
